@@ -149,7 +149,7 @@ calculate_bike_prediction_level <- function(predictions) {
 
 # Generate a data frame containing weather forecasting and bike prediction data
 generate_city_weather_bike_data <- function (){
-  cities_df <- read_csv("/home/rstudio/Test it/Final project/ssselected_cities.csv")
+  cities_df <- read_csv("/home/rstudio/Test it/Final project/selected_cities.csv")
   weather_df <- get_weather_forecaset_by_cities(cities_df$CITY_ASCII)
   results <- weather_df %>%
     mutate(BIKE_PREDICTION = predict_bike_demand(TEMPERATURE, HUMIDITY, WIND_SPEED, VISIBILITY,SEASONS, HOURS)) %>%
@@ -160,8 +160,6 @@ generate_city_weather_bike_data <- function (){
            LABEL, DETAILED_LABEL, FORECASTDATETIME)
   return(cities_bike_pred)
 }
-
-x <- read.csv("/home/rstudio/Test it/Final project/sselected_cities.csv")
 
 city_weather_bike_df <- generate_city_weather_bike_data()
 
